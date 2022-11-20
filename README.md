@@ -20,7 +20,7 @@ A web scraping app built in Flutter. The app scrapes text data relating to quote
  <table>
   <tr>
     <td>Inspirational Quotes Screen</td>
-     <td>Hummor Quotes Screen</td>
+     <td>Humor Quotes Screen</td>
      <td>Love Quotes Screen</td>
   </tr>
   <tr>
