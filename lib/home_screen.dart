@@ -43,81 +43,85 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: CustomScrollView(slivers: [
-      SliverToBoxAdapter(
-          child: Column(children: [
-        Container(
-          margin: const EdgeInsets.only(top: 40, bottom: 20),
-          child: Text(
-            'Quotes App',
-            style: textStyle(25, Colors.black, FontWeight.w700),
-          ),
-        ),
-      ])),
-      SliverGrid.count(
-          crossAxisCount: 2,
-          mainAxisSpacing: 5,
-          crossAxisSpacing: 5,
-          children: categories.map((category) {
-            return InkWell(
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => QuotesPage(category: category))),
-              child: Container(
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.pink,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Center(
-                    child: Text(
-                      category.toUpperCase(),
-                      style: textStyle(18, Colors.white, FontWeight.bold),
-                    ),
-                  ),
-                ),
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+              child: Column(children: [
+            Container(
+              margin: const EdgeInsets.only(top: 40, bottom: 20),
+              child: Text(
+                'Quotes App',
+                style: textStyle(25, Colors.black, FontWeight.w700),
               ),
-            );
-          }).toList()),
-      isDataThere == false
-          ? const SliverToBoxAdapter(
-              child: Center(child: CircularProgressIndicator()))
-          : SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
-              return Container(
-                margin: const EdgeInsets.all(8),
-                child: Card(
-                  elevation: 10,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Text(
-                          quotes[index],
-                          style: textStyle(
-                            18,
-                            Colors.grey[600]!,
-                            FontWeight.w500,
-                          ),
-                          textAlign: TextAlign.center,
+            ),
+          ])),
+          SliverGrid.count(
+              crossAxisCount: 2,
+              mainAxisSpacing: 5,
+              crossAxisSpacing: 5,
+              children: categories.map((category) {
+                return InkWell(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              QuotesPage(category: category))),
+                  child: Container(
+                    margin: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.pink,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Center(
+                        child: Text(
+                          category.toUpperCase(),
+                          style: textStyle(18, Colors.white, FontWeight.bold),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          authors[index],
-                          style:
-                              textStyle(18, Colors.blueGrey, FontWeight.w700),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              );
-            }, childCount: quotes.length))
-    ]));
+                );
+              }).toList()),
+          isDataThere == false
+              ? const SliverToBoxAdapter(
+                  child: Center(child: CircularProgressIndicator()))
+              : SliverList(
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                  return Container(
+                    margin: const EdgeInsets.all(8),
+                    child: Card(
+                      elevation: 10,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              quotes[index],
+                              style: textStyle(
+                                18,
+                                Colors.grey[600]!,
+                                FontWeight.w500,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              authors[index],
+                              style: textStyle(
+                                  18, Colors.blueGrey, FontWeight.w700),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }, childCount: quotes.length))
+        ],
+      ),
+    );
   }
 }

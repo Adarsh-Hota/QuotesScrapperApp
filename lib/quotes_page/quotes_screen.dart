@@ -44,19 +44,23 @@ class _QuotesPageState extends State<QuotesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: isDataThere == false
-            ? const Center(child: CircularProgressIndicator())
-            : CustomScrollView(slivers: [
+      body: isDataThere == false
+          ? const Center(child: CircularProgressIndicator())
+          : CustomScrollView(
+              slivers: [
                 SliverToBoxAdapter(
-                    child: Column(children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 40, bottom: 20),
-                    child: Text(
-                      '${widget.category} quotes'.toUpperCase(),
-                      style: textStyle(25, Colors.black, FontWeight.w700),
-                    ),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(top: 40, bottom: 20),
+                        child: Text(
+                          '${widget.category} quotes'.toUpperCase(),
+                          style: textStyle(25, Colors.black, FontWeight.w700),
+                        ),
+                      ),
+                    ],
                   ),
-                ])),
+                ),
                 SliverList(
                     delegate: SliverChildBuilderDelegate((context, index) {
                   return Container(
@@ -90,6 +94,8 @@ class _QuotesPageState extends State<QuotesPage> {
                     ),
                   );
                 }, childCount: quotes.length))
-              ]));
+              ],
+            ),
+    );
   }
 }
